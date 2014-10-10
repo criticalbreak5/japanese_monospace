@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>test</title>
+<script type="text/javascript" src="./jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="./jquery.japanese_monospace.js"></script>
+<script type="text/javascript">
+$(function() {
+	$("div").css(  { "font-family":"monospace", "font-size"  :"14px" } );
+	$("span").css( { "color":"red" } );
+	var css = {
+		"font-family" :"monospace", 
+		"text-align"  :"justify",
+		"text-justify":"inter-ideograph",
+		"font-size"   :"14px", 
+		"line-height" :"16px", 
+		"box-sizing"  :"border-box",
+		"width"       :"335px", 
+		"height"      :"65px", 
+		"padding"     :"1px", 
+		"overflow"    :"hidden"
+	};
+	var option = {
+		"preview-control-relative-top"   :"-50px", 
+		"preview-control-relative-left"  :"-2px", 
+		"preview-control-override-width" :"450px", 
+		"preview-control-override-height":"65px", 
+		"preview-control-line-length"    :"52", // 半角文字 : 1, 全角文字 : 2
+		"focus-background-color"         :"#F5F5F5", 
+		"blur-background-color"          :"#FFFFFF", 
+		"delay"                          :"10"
+	};
+	$("#textarea_id_1").css(css);
+	option["preview-control-id"] = "preview_control_id_1";
+	$("#textarea_id_1").japanese_monospace(option);
+	$("#textarea_id_2").css(css);
+	option["preview-control-id"] = "preview_control_id_2";
+	$("#textarea_id_2").japanese_monospace(option);
+	$("#textarea_id_3").css(css);
+	option["preview-control-id"] = "preview_control_id_3";
+	$("#textarea_id_3").japanese_monospace(option);
+	$("#textarea_id_4").css(css);
+	option["preview-control-id"] = "preview_control_id_4";
+	$("#textarea_id_4").japanese_monospace(option);
+	$("#textarea_id_5").css(css);
+	option["preview-control-id"] = "preview_control_id_5";
+	$("#textarea_id_5").japanese_monospace(option);
+	$("#textarea_id_6").css(css);
+	option["preview-control-id"] = "preview_control_id_6";
+	$("#textarea_id_6").japanese_monospace(option);
+	$("#textarea_id_7").css(css);
+	option["preview-control-id"] = "preview_control_id_7";
+	$("#textarea_id_7").japanese_monospace(option);
+});
+</script>
+</head>
+<body>
+<br /><br /><br /><br />
+<textarea id="textarea_id_1">あいうえおかきくけこさしすせそたちつてとなにぬねのは」</textarea><br /><br />
+<div>※<span> は」 </span>が折り返されてしまった(禁則処理のため)。</div>
+<br /><br /><br /><br />
+<textarea id="textarea_id_2">aiueo kakikukeko sasisuseso tatituteto naninuneno ha」</textarea><br /><br />
+<div>※<span> naninuneno ha」 </span>が折り返されてしまった(半角英字(小文字)のフォントサイズが大きいため)。</div>
+<br /><br /><br /><br />
+<textarea id="textarea_id_3">ａｉｕｅｏ　ｋａｋｉｋｕｋｅｋｏ　ｓａｓｉｓｕｓｅｓ」</textarea><br /><br />
+<div>※折り返されなかった(全角英字(小文字)のフォントサイズが小さいため)。</div>
+<br /><br /><br /><br />
+<textarea id="textarea_id_4">AIUEO KAKIKUKEKO SASISUSESO TATITUTETO NANINUNENO HA」</textarea><br /><br />
+<div>※<span> NANINUNENO HA」 </span>が折り返されてしまった(半角英字(大文字)のフォントサイズが大きいため)。</div>
+<br /><br /><br /><br />
+<textarea id="textarea_id_5">ＡＩＵＥＯ　ＫＡＫＩＫＵＫＥＫＯ　ＳＡＳＩＳＵＳＥＳ」</textarea><br /><br />
+<div>※折り返されなかった(全角英字(大文字)のフォントサイズが小さいため)。</div>
+<br /><br /><br /><br />
+<textarea id="textarea_id_6">1111111111222222222233333333334444444444555555555566」</textarea><br /><br />
+<div>※<span> 4555555555566」 </span>が折り返されてしまった(半角数字のフォントサイズが大きいため)。</div>
+<br /><br /><br /><br />
+<textarea id="textarea_id_7">１１１１１１１１１１２２２２２２２２２２３３３３３３」</textarea><br /><br />
+<div>※折り返されなかった(全角数字(大文字)のフォントサイズが小さいため)。</div>
+<br /><br /><br /><br />
+</body>
+</html>
